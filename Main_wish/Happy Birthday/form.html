@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel = "stylesheet" href = "F:\WD-II\bootstrap\bootstrap-5.3.3-dist\css\bootstrap.min.css">
+	<link rel = "stylesheet" href = "BDAY.css">
+</head>
+<body>
+	<canvas id=c>
+	</canvas>
+	<center>
+		<div class = "form-group">
+				<input type = "button" value = "ENTER THE NAME TO WISH THE PERSON &#128156; :" onclick = "wish()" class = "r"></i><br><br>
+					<input type = "text" id = "name" class = "fm"><br><br>
+		</div>
+		<button class="gift-redirect" onclick="goToSurprise()">🎁 Open Your Surprise</button>
+
+	<style>
+	.gift-redirect {
+	  background: linear-gradient(90deg, #ff512f, #dd2476);
+	  border: none;
+	  border-radius: 50px;
+	  padding: 15px 40px;
+	  color: white;
+	  font-size: 1.1rem;
+	  font-weight: bold;
+	  cursor: pointer;
+	  box-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+	  transition: all 0.3s ease;
+	  position: relative;
+	  overflow: hidden;
+	}
+
+	.gift-redirect::before {
+	  content: "🎁";
+	  position: absolute;
+	  left: 18px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  font-size: 1.3rem;
+	  animation: bounce 1.2s infinite;
+	}
+
+	@keyframes bounce {
+	  0%, 100% { transform: translateY(-50%) scale(1); }
+	  50% { transform: translateY(-70%) scale(1.2); }
+	}
+
+	.gift-redirect:hover {
+	  background: linear-gradient(90deg, #dd2476, #ff512f);
+	  transform: scale(1.05);
+	  box-shadow: 0 0 40px rgba(255, 150, 180, 0.8);
+	}
+	</style>
+
+	<script>
+	function goToSurprise() {
+	  // Redirect to your surprise proposal page
+	  window.location.href = "surprise.html"; // Change this to your actual file or URL
+	}
+	</script>
+
+	</center>
+	<script src = "app.js"></script>
+</body>
+</html>

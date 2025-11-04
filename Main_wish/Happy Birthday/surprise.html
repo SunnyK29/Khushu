@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surprise Gift Proposal</title>
+  <style>
+    /* 🌌 Background Setup */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #ffb6c1 0%, #ff6b81 40%, #2c003e 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* ✨ Floating Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 5s infinite;
+    }
+
+    @keyframes sparkle {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-800px) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* 🎁 Form Container */
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 40px 50px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
+      z-index: 10;
+    }
+
+    .container:hover {
+      box-shadow: 0 0 80px rgba(255, 255, 255, 0.4);
+      transform: scale(1.02);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #ffe259, #ffa751);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* 🎁 Gift Button */
+    .gift-btn {
+      width: 100%;
+      padding: 15px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(90deg, #ff4b1f, #ff9068);
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 140, 100, 0.7);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-btn::before {
+      content: "🎁";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4rem;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-70%) scale(1.2); }
+    }
+
+    .gift-btn:hover {
+      background: linear-gradient(90deg, #ff9068, #ff4b1f);
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(255, 180, 120, 0.9);
+    }
+
+    /* 🎥 Video Popup */
+    .video-popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .video-popup.active {
+      display: flex;
+    }
+
+    .video-container {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
+      animation: zoomIn 0.5s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: rgba(255,255,255,0.5);
+      transform: rotate(90deg);
+    }
+
+    video {
+      width: 600px;
+      max-width: 90vw;
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- ✨ Sparkle Effects -->
+  <script>
+    for (let i = 0; i < 50; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.animationDuration = 3 + Math.random() * 5 + 's';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(sparkle);
+    }
+  </script>
+
+  <!-- 🎁 Form -->
+  <div class="container">
+    <h2>💖 A Little Surprise Awaits You 💖</h2>
+    <form id="giftForm">
+      <button type="submit" class="gift-btn">Open Your Gift</button><br><br>
+	    <button class="gift-redirect" onclick="goToSurprise()">🎁 💫 The Journey Ends Here, Beautifully</button>
+    </form>
+  </div>
+
+  <!-- 🎥 Video Popup -->
+  <div class="video-popup" id="videoPopup">
+    <div class="video-container">
+      <button class="close-btn" id="closeBtn">&times;</button>
+      <video id="popupVideo" controls autoplay>
+        <source src="rotated.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('giftForm');
+    const videoPopup = document.getElementById('videoPopup');
+    const closeBtn = document.getElementById('closeBtn');
+    const video = document.getElementById('popupVideo');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const button = form.querySelector('button');
+      button.textContent = "Unwrapping your surprise...";
+      button.disabled = true;
+      setTimeout(() => {
+        videoPopup.classList.add('active');
+        video.currentTime = 0;
+        video.play();
+        button.textContent = "Open Your Gift 🎁";
+        button.disabled = false;
+      }, 2000);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      video.pause();
+      videoPopup.classList.remove('active');
+    });
+
+    videoPopup.addEventListener('click', (e) => {
+      if (e.target === videoPopup) {
+        video.pause();
+        videoPopup.classList.remove('active');
+      }
+    });
+  </script>
+
+
+	<style>
+	.gift-redirect {
+	  background: linear-gradient(90deg, #ff512f, #dd2476);
+	  border: none;
+	  border-radius: 50px;
+	  padding: 15px 40px;
+	  color: white;
+	  font-size: 1.1rem;
+	  font-weight: bold;
+	  cursor: pointer;
+	  box-shadow: 0 0 20px rgba(255, 100, 150, 0.5);
+	  transition: all 0.3s ease;
+	  position: relative;
+	  overflow: hidden;
+	}
+
+	.gift-redirect::before {
+	  content: "🎁";
+	  position: absolute;
+	  left: 18px;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  font-size: 1.3rem;
+	  animation: bounce 1.2s infinite;
+	}
+
+	@keyframes bounce {
+	  0%, 100% { transform: translateY(-50%) scale(1); }
+	  50% { transform: translateY(-70%) scale(1.2); }
+	}
+
+	.gift-redirect:hover {
+	  background: linear-gradient(90deg, #dd2476, #ff512f);
+	  transform: scale(1.05);
+	  box-shadow: 0 0 40px rgba(255, 150, 180, 0.8);
+	}
+	</style>
+
+	<script>
+	function goToSurprise() {
+	  // Redirect to your surprise proposal page
+	  window.location.href = "Thank_You.html"; // Change this to your actual file or URL
+	}
+	</script>
+
+</body>
+</html>
